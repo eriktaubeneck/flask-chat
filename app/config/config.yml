@@ -1,0 +1,10 @@
+COMMON: &common
+
+  DEBUG: False
+  SECRET_KEY: 'its-a-setup'
+
+DEVELOPMENT: &development
+  <<: *common
+  DEBUG: True
+  SITE_URL: 'localhost:4999'
+  SQLALCHEMY_DATABASE_URI: 'ordbok_local_config'
