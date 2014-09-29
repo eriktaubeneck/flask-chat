@@ -1,5 +1,5 @@
 # Mirror Park
-* Sample Flask App *
+*The app so fresh you with you'd thought of it first.*
 
 ---
 
@@ -29,4 +29,14 @@ Setup the environment (if you don't have [`virtualenv`](http://virtualenv.readth
 virtualenv venv
 source venv/bin/activate
 pip install -r requirements.txt
+```
+
+### Database
+
+Mirror Park requires a relational database. I recommend Postgres, however any of the [SQLAlchemy Engine Configuration](http://docs.sqlalchemy.org/en/latest/core/engines.html) will work. This needs to be included with the `SQLALCHEMY_DATABASE_URI`. This can either be included in `app/config/config.yml` or `app/config/local_config.yml`. (The later has the advantage of being ignored by git, so that you don't accidentally check in your secret keys and passwords.)
+
+Quick start in memory sqlite database setup:
+
+```
+SQLALCHEMY_DATABASE_URI: 'sqlite://'
 ```

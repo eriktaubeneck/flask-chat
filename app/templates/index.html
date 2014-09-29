@@ -2,10 +2,29 @@
 
 {% block body %}
 
+{% if user %}
+  {% include "modals/profile.html" %}
+{% else %}
+  {% include "modals/login_signup.html" %}
+{% endif %}
+{% if show_modal == 'register' %}
+  {% include "modals/register.html" %}
+{% endif %}
+
 <!-- Section 1 -->
 <section id="intro" data-speed="6" data-type="background">
   <div class="container">
-    <h1> Mirror Park </h1>
+    <ul class="nav navbar-nav navbar-left">
+      <li><h3> Mirror Park </h3></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+    {% if user %}
+      <li><a data-toggle="modal" data-target="#profile-modal">Profile</a></li>
+      <li><a href="{{ url_for('security.logout') }}">Log out</a></li>
+    {% else %}
+      <li><a data-toggle="modal" data-target="#login-signup-modal">Log in/Register</a></li>
+    {% endif %}
+    </ul>
   </div>
 </section>
 <!-- Section 2 -->
