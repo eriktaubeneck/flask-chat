@@ -4,6 +4,7 @@ from app.utils.processors import register_processors
 from app.models import db
 from app.models.user import user_datastore
 from app.views.index import index_bp
+from app.views.admin import admin
 
 
 def create_app(config=None, environment=None):
@@ -17,6 +18,7 @@ def create_app(config=None, environment=None):
 
     security.init_app(app, user_datastore)
     db.init_app(app)
+    admin.init_app(app)
     app.register_blueprint(index_bp)
 
     register_processors(app)

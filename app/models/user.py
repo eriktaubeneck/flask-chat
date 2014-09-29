@@ -25,7 +25,12 @@ class User(db.Model, UserMixin):
     roles = db.relationship(
         'Role',
         secondary=roles_users,
+        lazy='dynamic',
         backref=db.backref('users', lazy='dynamic')
     )
+
+    def has_role(self, role_name):
+        return self.roles.filter_by(name=role_name).first()
+
 
 user_datastore = SQLAlchemyUserDatastore(db, User, Role)
