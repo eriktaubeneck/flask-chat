@@ -1,0 +1,7 @@
+erik:
+  fullname: 'zoidberg'
+  email: 'zoidberg@planetexpress.com'
+  password: 'whynot'
+  active: True
+  confirmed_at: '2014-09-01'
+  foundry_relation_roles: ['admin']

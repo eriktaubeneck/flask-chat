@@ -27,7 +27,7 @@ class ProtectedModelView(ModelView):
     def is_accessible(self):
         if not current_user.is_authenticated():
             return False
-        if current_user.super_user:
+        if current_user.has_role('super_user'):
             return True
         else:
             if self.requires_super_user:
