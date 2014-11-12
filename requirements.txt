@@ -20,4 +20,5 @@ itsdangerous==0.24
 ordbok==0.1.4
 passlib==1.6.2
 psycopg2==2.5.4
+py-bcrypt==0.4
 wsgiref==0.1.2

@@ -2,6 +2,8 @@ COMMON: &common
 
   DEBUG: False
   SECRET_KEY: 'its-a-setup'
+  SECURITY_PASSWORD_HASH: bcrypt
+  SECURITY_PASSWORD_SALT: 'its-a-setup'
 
 DEVELOPMENT: &development
   <<: *common

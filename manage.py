@@ -1,5 +1,6 @@
 from datetime import datetime
 from flask.ext.script import Manager
+from flask.ext.security.utils import encrypt_password
 from foundry import SQLAlchemyFoundry, Mold
 from app.factory import create_app
 from app.models import db
@@ -11,6 +12,7 @@ manager = Manager(app)
 
 user_converters = {
     'confirmed_at': lambda s: datetime.strptime(s, '%Y-%m-%d'),
+    'password': lambda s: encrypt_password(s),
 }
 
 foundry = SQLAlchemyFoundry(
