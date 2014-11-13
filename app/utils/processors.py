@@ -16,3 +16,9 @@ def user_context_processor():
 
 def register_processors(app):
     app.context_processor(user_context_processor)
+
+    security = app.extensions['security']
+
+    @security.login_context_processor
+    def login_context_processor():
+        return {'show_modal': 'login-signup'}

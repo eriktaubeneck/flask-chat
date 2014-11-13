@@ -4,6 +4,7 @@ COMMON: &common
   SECRET_KEY: 'its-a-setup'
   SECURITY_PASSWORD_HASH: bcrypt
   SECURITY_PASSWORD_SALT: 'its-a-setup'
+  SECURITY_LOGIN_USER_TEMPLATE: 'index.html'
 
 DEVELOPMENT: &development
   <<: *common
