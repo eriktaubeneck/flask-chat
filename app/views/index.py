@@ -34,7 +34,7 @@ def register(login_failed=False, **kwargs):
         return index(show_modal='profile')
 
     if form.errors:
-        show_modal = 'login-signup'
+        show_modal = 'signup'
     else:
         show_modal = None
 

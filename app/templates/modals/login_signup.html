@@ -1,15 +1,9 @@
 {% from '_macros.html' import render_field %}
+{% from 'modals/modal.html' import modal %}
 
-<div class="modal fade" id="login-signup-modal">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h2 class="modal-title">Welcome!</h4>
-      </div>
-      <div class="modal-body">
+{% call modal('login-modal') %}
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-md-8 col-md-offset-2">
             <h3 class="centered"> Login </h3>
             <form class="well" action="{{ url_for('security.login') }}" method="POST">
               {{ login_user_form.hidden_tag() }}
@@ -19,7 +13,15 @@
               <button type="submit" class="btn btn-primary btn-large">Login</button>
             </form>
           </div>
-          <div class="col-md-6">
+        </div>
+        <h4>
+          Need an account? <a data-toggle="modal" data-target="#signup-modal">Signup</a>
+        </h4>
+{% endcall %}
+
+{% call modal('signup-modal') %}
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2">
             <h3 class="centered"> Signup </h3>
             <form class="well" action="{{ url_for('index.register') }}",  method="POST">
               {{ register_form.hidden_tag() }}
@@ -31,7 +33,7 @@
             </form>
           </div>
         </div>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+        <h4>
+          Already have an account? <a data-toggle="modal" data-target="#login-modal">Login</a>
+        </h4>
+{% endcall %}

@@ -21,4 +21,4 @@ def register_processors(app):
 
     @security.login_context_processor
     def login_context_processor():
-        return {'show_modal': 'login-signup'}
+        return {'show_modal': 'login'}

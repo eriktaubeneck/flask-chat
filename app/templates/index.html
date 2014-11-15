@@ -22,7 +22,8 @@
       <li><a data-toggle="modal" data-target="#profile-modal">Profile</a></li>
       <li><a href="{{ url_for('security.logout') }}">Log out</a></li>
     {% else %}
-      <li><a data-toggle="modal" data-target="#login-signup-modal">Log in/Register</a></li>
+      <li><a data-toggle="modal" data-target="#login-modal">Log in</a></li>
+      <li><a data-toggle="modal" data-target="#signup-modal">Signup</a></li>
     {% endif %}
     </ul>
   </div>
