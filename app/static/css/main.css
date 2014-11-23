@@ -16,6 +16,22 @@ body {
     color: rgba(0,0,0,0.7);
 }
 
+.panel {
+    padding: 5px;
+}
+
+.panel-heading {
+    color: rgba(44, 179, 190, 1);
+    padding: 5px;
+    text-align: left;
+}
+
+.panel-body {
+    padding: 5px;
+    color: rgba(0,0,0,0.8);
+    text-align: left;
+}
+
 #header {
     background-color: rgba(0,0,0,0.8);
     border-color: transparent;
@@ -38,7 +54,7 @@ body {
     z-index:0;
 }
 
-#about {
+#chat {
     background-color: rgba(0,0,0,0.3);
     border-color: transparent;
     height: auto;
@@ -47,6 +63,11 @@ body {
     position: relative;
     padding: 90px 0;
     text-align: center;
+}
+
+#chat-text {
+    overflow: auto;
+    height: 500px;
 }
 
 #footer {

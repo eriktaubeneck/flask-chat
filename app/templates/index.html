@@ -15,7 +15,7 @@
 <section id="header" data-type="background">
   <div class="container">
     <ul class="nav navbar-nav navbar-left">
-      <li><h3> Mirror Park </h3></li>
+      <li><h3> Flask Chat </h3></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
     {% if user %}
@@ -29,22 +29,29 @@
   </div>
 </section>
 
-<section id="home" data-type="background">
-  <div class="container">
-      The app so fresh you wish you'd thought of it first.
-  </div>
-</section>
-
-<section id="about" data-type="background">
-  <div class="container">
-    <h4>More content here!</h4>
+<section id="chat" data-type="background">
+  <div id="chat-text">
   </div>
 </section>
 
 <section id="footer">
   <div class="container">
-    <h4>Mirror Park Example Flask App by Erik Taubeneck</h4>
+    <form id="input-form" class="form-inline">
+      <div class="form-group">
+        <input id="input-handle" type="text" class="form-control" placeholder="Enter handle" autofocus />
+      </div>
+      <div class="form-group">
+        <input id="input-text" type="text" class="form-control" placeholder="Enter chat text here!" autofocus />
+      </div>
+      <button class="btn btn-primary" type="submit">Send</button>
+    </form>
   </div>
 </section>
 
+{% endblock %}
+
+{% block footer_js %}
+{{ super() }}
+<script type="text/javascript" src="{{ url_for('static', filename='js/reconnecting-websocket.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/application.js') }}"></script>
 {% endblock %}

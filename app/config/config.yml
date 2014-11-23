@@ -5,9 +5,11 @@ COMMON: &common
   SECURITY_PASSWORD_HASH: bcrypt
   SECURITY_PASSWORD_SALT: 'its-a-setup'
   SECURITY_LOGIN_USER_TEMPLATE: 'index.html'
+  REDIS_CHANNEL: 'chat'
 
 DEVELOPMENT: &development
   <<: *common
   DEBUG: True
   SITE_URL: 'localhost:4999'
   SQLALCHEMY_DATABASE_URI: 'ordbok_local_config'
+  REDIS_URL: 'ordbok_local_config'
