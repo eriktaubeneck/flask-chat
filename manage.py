@@ -39,5 +39,14 @@ def drop_and_create_db():
 def populate_db():
     foundry.load()
 
+
+@manager.command
+def update_demo_password():
+    user, password = foundry['zoidberg'], app.config['SECRET_PASSWORD']
+    user.password = encrypt_password(password)
+    db.session.add(user)
+    db.session.commit()
+
+
 if __name__ == '__main__':
     manager.run()
