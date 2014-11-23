@@ -1,27 +1,9 @@
-# Mirror Park
-*The app so fresh you with you'd thought of it first.*
-
----
-
-Mirror Park is a small sample Flask app that integrates:
-
-- [Flask-Security](https://pythonhosted.org/Flask-Security)
-- [Flask-SQLAlchemy](https://pythonhosted.org/Flask-SQLAlchemy)
-- [Flask-Admin](http://flask-admin.readthedocs.org/en/latest)
-- [Flask-Script](http://flask-script.readthedocs.org/en/latest)
-- [Ordbok](https://github.com/alphaworksinc/ordbok)
-
+# Flask Chat
+*A basic chat implementation using Flask-Sockets*
 
 ---
 
 ## Setup
-
-Clone the repo, replacing `new-project` with the name of your new project:
-
-```
-git clone https://github.com/eriktaubeneck/mirror-park.git new-project
-cd new-project
-```
 
 Setup the environment (if you don't have [`virtualenv`](http://virtualenv.readthedocs.org/en/latest/) installed, install it):
 
@@ -31,12 +13,34 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### Database
+### Message PubSub
 
-Mirror Park requires a relational database. I recommend Postgres, however any of the [SQLAlchemy Engine Configuration](http://docs.sqlalchemy.org/en/latest/core/engines.html) will work. This needs to be included with the `SQLALCHEMY_DATABASE_URI`. This can either be included in `app/config/config.yml` or `app/config/local_config.yml`. (The later has the advantage of being ignored by git, so that you don't accidentally check in your secret keys and passwords.)
+Flask Chat uses [Redis](http://redis.io/) as a PubSub to facilitate chat and as a datastore to retain old chats. Do not use Redis if the longterm retension of the chats is important as Redis is designed to eject data as needed without warning. Alternatives like [RabbitMQ](http://www.rabbitmq.com/) can replace both functionalities that Redis is used for, and provide a bit more robust data retension, or the datastore portion can be replaced independently to a more traditional datastore such as a relational database or NoSQL database.
 
-Quick start in memory sqlite database setup:
+If you don't have redis, it can be installed on OS X with:
 
 ```
-SQLALCHEMY_DATABASE_URI: 'sqlite://'
+brew install redis
 ```
+
+`brew` will present a few different ways to start `redis`. If you with not to have `redis` launch at startup, you can start it ondemand with:
+
+```
+redis-server /usr/local/etc/redis.conf
+```
+
+Configure to work the application by adding the following to `app/config.local_config.yml`
+
+```
+REDIS_URL: 'redis://localhost'
+```
+
+# Starting the Server
+
+Start the server with:
+
+```
+gunicorn -k flask_sockets.worker server:app -b 127.0.0.1:4999 --debug
+```
+
+and visit [`http://localhost:4999`](http://localhost:4999). Open in multiple browsers to observer the action with multiple users.
