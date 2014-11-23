@@ -1,4 +1,5 @@
 import gevent
+import json
 
 
 def register_chat_routes(app, sockets):
@@ -13,6 +14,7 @@ def register_chat_routes(app, sockets):
             if message:
                 print 'message: {}'.format(message)
                 app.redis.publish(app.config['REDIS_CHANNEL'], message)
+                app.redis.lpush(app.config['REDIS_CHANNEL'], message)
 
     @sockets.route('/receive')
     def receive(ws):
@@ -20,3 +22,8 @@ def register_chat_routes(app, sockets):
 
         while ws is not None:
             gevent.sleep()
+
+    @app.route('/past_chats')
+    def past_chats():
+        past_chats = app.redis.lrange(app.config['REDIS_CHANNEL'], 0, 10)
+        return json.dumps(past_chats[::-1])

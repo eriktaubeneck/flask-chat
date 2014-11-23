@@ -16,19 +16,27 @@ body {
     color: rgba(0,0,0,0.7);
 }
 
-.panel {
-    padding: 5px;
+.panel-default {
+    margin-bottom: 0px;
 }
 
+.panel {
+    padding: 5px;
+    border: none;
+    background-color: transparent;
+}
+
+
 .panel-heading {
-    color: rgba(44, 179, 190, 1);
+    color: rgba(44, 179, 190, 1) !important;
+    background-color: rgba(0, 0, 0, 0.4) !important;
     padding: 5px;
     text-align: left;
+    border: none;
 }
 
 .panel-body {
     padding: 5px;
-    color: rgba(0,0,0,0.8);
     text-align: left;
 }
 
@@ -61,7 +69,7 @@ body {
     margin: 0 auto;
     width: 100%;
     position: relative;
-    padding: 90px 0;
+    padding: 120px 0;
     text-align: center;
 }
 
@@ -74,9 +82,17 @@ body {
     background-color: rgba(0,0,0,0.3);
     border-color: transparent;
     clear: both;
-    height: auto;
     margin: 300px 0 0 0;
+    position: fixed;
+    left: 0px;
+    bottom: 0px;
+    height: 100px;
     width: 100%;
-    position: relative;
     padding: 20px 0 20px;
+}
+
+/* IE 6 */
+* html #footer {
+    position:absolute;
+    top:expression((0-(footer.offsetHeight)+(document.documentElement.clientHeight ? document.documentElement.clientHeight : document.body.clientHeight)+(ignoreMe = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop))+'px');
 }
