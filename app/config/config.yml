@@ -2,9 +2,6 @@ COMMON: &common
 
   DEBUG: False
   SECRET_KEY: 'its-a-setup'
-  SECURITY_PASSWORD_HASH: bcrypt
-  SECURITY_PASSWORD_SALT: 'its-a-setup'
-  SECURITY_LOGIN_USER_TEMPLATE: 'index.html'
   REDIS_CHANNEL: 'chat'
 
 DEVELOPMENT: &development
@@ -12,3 +9,8 @@ DEVELOPMENT: &development
   DEBUG: True
   SITE_URL: 'localhost:4999'
   REDIS_URL: 'ordbok_local_config'
+
+PRODUCTION: &production
+  <<: *common
+  REDIS_URL: 'ordbok_env_config_rediscloud_url'
+  SITE_URL: 'flaskchat.skien.cc'
