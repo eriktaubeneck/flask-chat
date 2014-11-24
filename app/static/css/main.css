@@ -2,6 +2,9 @@ a {
     color: #279B27
 }
 
+* { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+  *:before, *:after { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+
 body {
     font-family: 'Lato', sans-serif;
     font-size: 14pt;
@@ -75,24 +78,25 @@ body {
 
 #chat-text {
     overflow: auto;
-    height: 500px;
 }
 
 #footer {
     background-color: rgba(0,0,0,0.3);
     border-color: transparent;
-    clear: both;
-    margin: 300px 0 0 0;
     position: fixed;
-    left: 0px;
-    bottom: 0px;
+    bottom: 0;
+    clear: both;
+    margin: 40px 0 0 0;
     height: 100px;
     width: 100%;
     padding: 20px 0 20px;
 }
 
-/* IE 6 */
-* html #footer {
-    position:absolute;
-    top:expression((0-(footer.offsetHeight)+(document.documentElement.clientHeight ? document.documentElement.clientHeight : document.body.clientHeight)+(ignoreMe = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop))+'px');
+@media (max-width: 640px) {
+    #footer {
+        height: 170px;
+    }
+    #chat {
+        padding: 190px 0;
+    }
 }
