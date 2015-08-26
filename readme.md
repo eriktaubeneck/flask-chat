@@ -29,7 +29,7 @@ brew install redis
 redis-server /usr/local/etc/redis.conf
 ```
 
-Configure to work the application by adding the following to `app/config.local_config.yml`
+Configure to work the application by adding the following to `app/config/local_config.yml`
 
 ```
 REDIS_URL: 'redis://localhost'
